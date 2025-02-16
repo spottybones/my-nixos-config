@@ -32,6 +32,13 @@
     eza # A modern replacement for ‘ls’
     fzf # A command-line fuzzy finder
 
+    # common programs I use for development
+    neovim
+    lazygit
+    devenv
+    gh
+    just
+
     # networking tools
     ipcalc  # it is a calculator for the IPv4/v6 addresses
 
