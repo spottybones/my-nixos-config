@@ -38,6 +38,7 @@
     devenv
     gh
     just
+    powerline
 
     # networking tools
     ipcalc  # it is a calculator for the IPv4/v6 addresses
@@ -71,6 +72,7 @@
   # import package configuration
   imports = [
     ./packages/zsh.nix
+    ./packages/tmux.nix
   ];
 
   # This value determines the home Manager release that your
