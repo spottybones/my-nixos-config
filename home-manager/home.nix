@@ -39,6 +39,10 @@
     gh
     just
     powerline
+    cargo
+    gcc
+    nodejs_20
+    python313
 
     # networking tools
     ipcalc  # it is a calculator for the IPv4/v6 addresses
