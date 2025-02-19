@@ -73,10 +73,10 @@
     userEmail = "scott@lentigo.net";
   };
 
-  # import package configuration
+  # import program configuration
   imports = [
-    ./packages/zsh.nix
-    ./packages/tmux.nix
+    ./programs/zsh
+    ./programs/tmux
   ];
 
   # This value determines the home Manager release that your
