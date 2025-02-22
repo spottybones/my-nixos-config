@@ -33,7 +33,6 @@
     fzf # A command-line fuzzy finder
 
     # common programs I use for development
-    neovim
     lazygit
     devenv
     gh
@@ -77,6 +76,7 @@
   imports = [
     ./programs/zsh
     ./programs/tmux
+    ./programs/neovim
   ];
 
   # This value determines the home Manager release that your
