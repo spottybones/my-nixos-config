@@ -27,7 +27,7 @@
       ];
       theme = "agnoster";
       extraConfig = ''
-        ZSH_TMUX_AUTOSTART=true
+        ZSH_TMUX_AUTOSTART=false
 
         zstyle :omz:plugins:eza dirs-first yes
         zstyle :omz:plugins:eza show-group yes
