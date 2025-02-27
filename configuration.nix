@@ -61,7 +61,11 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.scott = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    # Enable 'docker' control for the user
+    extraGroups = [
+      "wheel"       # Enable ‘sudo’ for the user
+      "docker"      # Enable 'docker' control for the user
+    ];
     packages = with pkgs; [ gh ];
     openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDd4nbpzqHdNWJCNDGg5NbZ1zX9OHwJIr9//mjtDL9mv" ];
     shell = pkgs.zsh;
@@ -83,6 +87,7 @@
     gawk
     zstd
     gnupg
+    docker-compose
   ];
 
   environment.variables.EDITOR = "vim";
@@ -145,6 +150,11 @@
 
   # Enable the Flakes feature and the accompanying new nix command-line tool
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+  # set up Docker virtualisation
+  virtualisation.docker = {
+    enable = true;
+  };
 
 }
 
