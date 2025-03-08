@@ -14,7 +14,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "jupiter"; # Define your hostname.
+  networking.hostName = "nixos"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   # networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
@@ -61,12 +61,8 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.scott = {
     isNormalUser = true;
-    # Enable 'docker' control for the user
-    extraGroups = [
-      "wheel"       # Enable ‘sudo’ for the user
-      "docker"      # Enable 'docker' control for the user
-    ];
-    packages = with pkgs; [ gh ];
+    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    packages = with pkgs; [ ];
     openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDd4nbpzqHdNWJCNDGg5NbZ1zX9OHwJIr9//mjtDL9mv" ];
     shell = pkgs.zsh;
   };
@@ -87,7 +83,6 @@
     gawk
     zstd
     gnupg
-    docker-compose
   ];
 
   environment.variables.EDITOR = "vim";
@@ -143,18 +138,12 @@
   # and migrated your data accordingly.
   #
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
-  system.stateVersion = "24.11"; # Did you read the comment?
+  system.stateVersion = "24.05"; # Did you read the comment?
 
   # enable the QEMU guest agent
   services.qemuGuest.enable = true;
 
   # Enable the Flakes feature and the accompanying new nix command-line tool
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
-  # set up Docker virtualisation
-  virtualisation.docker = {
-    enable = true;
-  };
-
 }
 
