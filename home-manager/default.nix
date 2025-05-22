@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   # TODO please change the username & home directory to your own
@@ -31,6 +31,7 @@
     yq-go # yaml processor https://github.com/mikefarah/yq
     eza # A modern replacement for ‘ls’
     fzf # A command-line fuzzy finder
+    fd
     unzip
 
     # common programs I use for development
@@ -40,12 +41,12 @@
     just
     powerline
     cargo
-    gcc
+    clang
     nodejs_20
-    python313
+    uv
 
     # networking tools
-    ipcalc  # it is a calculator for the IPv4/v6 addresses
+    ipcalc # it is a calculator for the IPv4/v6 addresses
 
     # misc
 
@@ -53,10 +54,10 @@
     #
     # it provides the command `nom` works just like `nix`
     # with more details log output
-#   nix-output-monitor
+    #   nix-output-monitor
 
     # productivity
-    htop  # replacement of htop/nmon
+    htop # replacement of htop/nmon
 
     # system call monitoring
     lsof # list open files

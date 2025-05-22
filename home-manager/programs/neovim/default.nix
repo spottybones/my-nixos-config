@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   programs.neovim = {
@@ -11,9 +11,11 @@
       clang
       ruff
       rust-analyzer
-      luajit
-      luarocks
+      lua51Packages.lua
+      lua51Packages.luarocks
       tree-sitter
+      nil
+      nixfmt-rfc-style
     ];
 
   };
