@@ -21,6 +21,17 @@
       home-manager-25-05,
       ...
     }:
+
+    let
+      home-manager-options = {
+        home-manager = {
+          useGlobalPkgs = true;
+          useUserPackages = true;
+          backupFileExtension = "bak";
+          users.scott = import ./home-manager;
+        };
+      };
+    in
     {
       nixosConfigurations = {
         jupiter = nixpkgs.lib.nixosSystem {
@@ -28,15 +39,7 @@
           modules = [
             ./hosts/jupiter
             home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.backupFileExtension = "bak";
-              home-manager.users.scott = import ./home-manager;
-
-              # Optionally, use home-manager.extraSpecialArgs to pass
-              # arguments to home.nix
-            }
+            home-manager-options
           ];
         };
         nixos = nixpkgs.lib.nixosSystem {
@@ -44,15 +47,7 @@
           modules = [
             ./hosts/nixos
             home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.backupFileExtension = "bak";
-              home-manager.users.scott = import ./home-manager;
-
-              # Optionally, use home-manager.extraSpecialArgs to pass
-              # arguments to home.nix
-            }
+            home-manager-options
           ];
         };
         mneme = nixpkgs-25-05.lib.nixosSystem {
@@ -60,15 +55,7 @@
           modules = [
             ./hosts/mneme
             home-manager-25-05.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.backupFileExtension = "bak";
-              home-manager.users.scott = import ./home-manager;
-
-              # Optionally, use home-manager.extraSpecialArgs to pass
-              # arguments to home.nix
-            }
+            home-manager-options
           ];
         };
       };
