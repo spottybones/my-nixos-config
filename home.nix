@@ -5,7 +5,7 @@
   imports = [
     ./programs/tmux.nix
     ./programs/zsh.nix
-    ./programs/neovim.nix
+    ./home-manager/programs/neovim
     ./programs/bat.nix
   ];
 

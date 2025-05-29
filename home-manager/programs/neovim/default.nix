@@ -5,6 +5,7 @@
     enable = true;
     withPython3 = true;
     withNodeJs = true;
+    withRuby = false;
 
     extraPackages = with pkgs; [
       bash-language-server
@@ -17,7 +18,5 @@
       nil
       nixfmt-rfc-style
     ];
-
   };
-
 }
