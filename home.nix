@@ -6,7 +6,7 @@
     ./programs/tmux.nix
     ./programs/zsh.nix
     ./home-manager/programs/neovim
-    ./programs/bat.nix
+    ./home-manager/programs/bat
   ];
 
   # Home Manager needs a bit of information about you and the paths it should

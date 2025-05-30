@@ -79,6 +79,7 @@
     ./programs/zsh
     ./programs/tmux
     ./programs/neovim
+    ./programs/bat
   ];
 
   # This value determines the home Manager release that your
