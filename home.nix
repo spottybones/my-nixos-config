@@ -4,7 +4,7 @@
   # import package configurations
   imports = [
     ./home-manager/programs/tmux
-    ./programs/zsh.nix
+    ./home-manager/programs/zsh
     ./home-manager/programs/neovim
     ./home-manager/programs/bat
   ];
