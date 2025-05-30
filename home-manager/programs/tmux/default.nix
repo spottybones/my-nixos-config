@@ -13,7 +13,7 @@
     extraConfig = ''
       ## TMUX config - these settings come from the example presented in the
       ## Pragmatic Programmer's tmux 2 book
- 
+
       # set the delay between prefix and command
       set -s escape-time 1
 

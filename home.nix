@@ -3,7 +3,7 @@
 {
   # import package configurations
   imports = [
-    ./programs/tmux.nix
+    ./home-manager/programs/tmux
     ./programs/zsh.nix
     ./home-manager/programs/neovim
     ./home-manager/programs/bat
@@ -78,7 +78,6 @@
     pkgs.stow
     pkgs.subnetcalc
     pkgs.tio
-    pkgs.tmux
     pkgs.wget
     pkgs.xz
     pkgs.uv
