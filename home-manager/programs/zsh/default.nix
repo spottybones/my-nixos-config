@@ -1,5 +1,5 @@
 # my zsh configuration
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
   programs.zsh = {
@@ -23,7 +23,7 @@
         "z"
       ];
       theme = "agnoster";
-      extraConfig = ''
+      extraConfig = lib.mkDefault ''
         ZSH_TMUX_AUTOSTART=false
       '';
     };
