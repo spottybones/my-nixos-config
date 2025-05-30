@@ -17,10 +17,8 @@
     oh-my-zsh = {
       enable = true;
       plugins = [
-        "direnv"
         "git"
         "tmux"
-        "eza"
         "vi-mode"
         "fzf"
         "z"
@@ -28,10 +26,6 @@
       theme = "agnoster";
       extraConfig = ''
         ZSH_TMUX_AUTOSTART=false
-
-        zstyle :omz:plugins:eza dirs-first yes
-        zstyle :omz:plugins:eza show-group yes
-        zstyle :omz:plugins:eza icons yes
       '';
     };
 
@@ -48,4 +42,20 @@
     '';
   };
 
+  programs.direnv = {
+    enable = true;
+    enableZshIntegration = true;
+    nix-direnv.enable = true;
+  };
+
+  programs.eza = {
+    enable = true;
+    enableZshIntegration = true;
+    git = true;
+    icons = "auto";
+    extraOptions = [
+      "--group-directories-first"
+      "--group"
+    ];
+  };
 }
