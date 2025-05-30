@@ -123,4 +123,9 @@
 
   # enable XDG directory support
   xdg.enable = true;
+
+  # override TMUX AUTOSTART for Grayslab
+  programs.zsh.oh-my-zsh.extraConfig = lib.mkForce ''
+    ZSH_TMUX_AUTOSTART=true
+  '';
 }
