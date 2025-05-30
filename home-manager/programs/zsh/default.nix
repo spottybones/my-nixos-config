@@ -20,7 +20,6 @@
         "git"
         "tmux"
         "vi-mode"
-        "fzf"
         "z"
       ];
       theme = "agnoster";
@@ -46,6 +45,11 @@
     enable = true;
     enableZshIntegration = true;
     nix-direnv.enable = true;
+  };
+
+  programs.atuin = {
+    enable = true;
+    enableZshIntegration = true;
   };
 
   programs.eza = {
