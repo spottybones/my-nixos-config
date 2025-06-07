@@ -9,6 +9,7 @@
     keyMode = "vi";
     terminal = "tmux-256color";
     prefix = "C-a";
+    focusEvents = true;
 
     extraConfig = ''
       ## TMUX config - these settings come from the example presented in the
