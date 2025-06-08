@@ -7,6 +7,9 @@
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager/release-25.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    # pre-commit-hooks
+    pre-commit-hooks.url = "github:cachix/git-hooks.nix";
   };
 
   outputs =
@@ -15,6 +18,7 @@
       nixpkgs,
       nix-darwin,
       home-manager,
+      pre-commit-hooks,
     }:
 
     let
@@ -26,8 +30,32 @@
           users.scott = import ./home-manager;
         };
       };
+
+      forAllSystems = nixpkgs.lib.genAttrs [
+        "x86_64-linux"
+        "aarch64-linux"
+        "x86_64-darwin"
+        "aarch64-darwin"
+      ];
+
     in
     {
+      checks = forAllSystems (system: {
+        pre-commit-check = inputs.pre-commit-hooks.lib.${system}.run {
+          src = ./.;
+          hooks = {
+            nixfmt-rfc-style.enable = true;
+          };
+        };
+      });
+
+      devShells = forAllSystems (system: {
+        default = nixpkgs.legacyPackages.${system}.mkShell {
+          inherit (self.checks.${system}.pre-commit-check) shellHook;
+          buildInputs = self.checks.${system}.pre-commit-check.enabledPackages;
+        };
+      });
+
       nixosConfigurations = {
         jupiter = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
@@ -56,7 +84,9 @@
       };
       darwinConfigurations."GraySlab" = nix-darwin.lib.darwinSystem {
         system = "x86_64-darwin";
-        specialArgs = { inherit self; };
+        specialArgs = {
+          inherit self;
+        };
         modules = [
           ./hosts/grayslab
           home-manager.darwinModules.home-manager
