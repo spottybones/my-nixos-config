@@ -2,14 +2,18 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
-  imports =
-    [
-      ./hardware-configuration.nix # Include the results of the hardware scan.
-      ( import ../common.nix { pkgs = pkgs; } ) # common configuration across all hosts
-    ];
+  imports = [
+    ./hardware-configuration.nix # Include the results of the hardware scan.
+    (import ../common.nix { pkgs = pkgs; }) # common configuration across all hosts
+  ];
 
   networking.hostName = "nixos"; # Define your hostname.
   # Pick only one of the below networking options.
@@ -21,7 +25,9 @@
     isNormalUser = true;
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [ gh ];
-    openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDd4nbpzqHdNWJCNDGg5NbZ1zX9OHwJIr9//mjtDL9mv" ];
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDd4nbpzqHdNWJCNDGg5NbZ1zX9OHwJIr9//mjtDL9mv"
+    ];
     shell = pkgs.zsh;
   };
 

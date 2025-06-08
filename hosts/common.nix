@@ -56,8 +56,14 @@
   system.copySystemConfiguration = false;
 
   # Enable the Flakes feature and the accompanying new nix command-line tool
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   # Set trusted users
-  nix.settings.trusted-users = [ "root" "scott" ];
+  nix.settings.trusted-users = [
+    "root"
+    "scott"
+  ];
 }
