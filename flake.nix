@@ -47,7 +47,11 @@
         pre-commit-check = inputs.pre-commit-hooks.lib.${system}.run {
           src = ./.;
           hooks = {
+            check-added-large-files.enable = true;
+            end-of-file-fixer.enable = true;
+            flake-checker.enable = true;
             nixfmt-rfc-style.enable = true;
+            trim-trailing-whitespace.enable = true;
           };
         };
       });
