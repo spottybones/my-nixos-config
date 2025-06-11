@@ -1,5 +1,12 @@
-{ pkgs, ... }:
+{
+  config,
+  pkgs,
+  ...
+}:
 
+let
+  nvimPath = "${config.home.homeDirectory}/.config/nix//home-manager/programs/neovim/nvim";
+in
 {
   programs.neovim = {
     enable = true;
@@ -19,4 +26,6 @@
       nixfmt-rfc-style
     ];
   };
+
+  xdg.configFile."nvim".source = config.lib.file.mkOutOfStoreSymlink nvimPath;
 }
