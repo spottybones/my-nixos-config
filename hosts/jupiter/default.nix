@@ -34,6 +34,7 @@
     ];
     shell = pkgs.zsh;
   };
+  security.sudo.wheelNeedsPassword = false;
 
   # host specific system packages
   environment.systemPackages = with pkgs; [
