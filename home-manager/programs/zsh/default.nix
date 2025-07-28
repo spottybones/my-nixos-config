@@ -23,9 +23,6 @@
         "z"
       ];
       theme = "agnoster";
-      extraConfig = lib.mkDefault ''
-        ZSH_TMUX_AUTOSTART=false
-      '';
     };
 
     defaultKeymap = "viins";
