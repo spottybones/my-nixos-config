@@ -61,6 +61,7 @@
     [
       bitstream-vera-sans-mono
       dejavu-sans-mono
+      fira-code
       hack
       inconsolata
       roboto-mono
