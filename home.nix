@@ -27,66 +27,65 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages =
-    [
-      # # Adds the 'hello' command to your environment. It prints a friendly
-      # # "Hello, world!" when run.
-      # pkgs.hello
+  home.packages = [
+    # # Adds the 'hello' command to your environment. It prints a friendly
+    # # "Hello, world!" when run.
+    # pkgs.hello
 
-      # # It is sometimes useful to fine-tune packages, for example, by applying
-      # # overrides. You can do that directly here, just don't forget the
-      # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
-      # # fonts?
-      # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
+    # # It is sometimes useful to fine-tune packages, for example, by applying
+    # # overrides. You can do that directly here, just don't forget the
+    # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
+    # # fonts?
+    # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
 
-      # # You can also create simple shell scripts directly inside your
-      # # configuration. For example, this adds a command 'my-hello' to your
-      # # environment:
-      # (pkgs.writeShellScriptBin "my-hello" ''
-      #   echo "Hello, ${config.home.username}!"
-      # '')
-      pkgs._1password-cli
-      pkgs.atuin
-      pkgs.bat
-      pkgs.cargo
-      pkgs.coreutils
-      pkgs.delta
-      pkgs.devenv
-      pkgs.direnv
-      pkgs.eza
-      pkgs.fd
-      pkgs.findutils
-      pkgs.fzf
-      pkgs.gawk
-      pkgs.gh
-      pkgs.git
-      pkgs.git-crypt
-      pkgs.gnupg
-      pkgs.gnused
-      pkgs.go
-      pkgs.google-cloud-sdk
-      pkgs.htop
-      pkgs.jq
-      pkgs.julia-bin
-      pkgs.just
-      pkgs.lazygit
-      pkgs.ncdu
-      pkgs.openconnect
-      pkgs.pass
-      pkgs.powerline
-      pkgs.ripgrep
-      pkgs.sqlite
-      pkgs.stow
-      pkgs.subnetcalc
-      pkgs.tio
-      pkgs.wget
-      pkgs.xz
-      pkgs.uv
-    ]
-    ++ (with pkgs.python313Packages; [
-      python
-      pip
-    ]);
+    # # You can also create simple shell scripts directly inside your
+    # # configuration. For example, this adds a command 'my-hello' to your
+    # # environment:
+    # (pkgs.writeShellScriptBin "my-hello" ''
+    #   echo "Hello, ${config.home.username}!"
+    # '')
+    pkgs._1password-cli
+    pkgs.atuin
+    pkgs.bat
+    pkgs.cargo
+    pkgs.coreutils
+    pkgs.delta
+    pkgs.devenv
+    pkgs.direnv
+    pkgs.eza
+    pkgs.fd
+    pkgs.findutils
+    pkgs.fzf
+    pkgs.gawk
+    pkgs.gh
+    pkgs.git
+    pkgs.git-crypt
+    pkgs.gnupg
+    pkgs.gnused
+    pkgs.go
+    pkgs.google-cloud-sdk
+    pkgs.htop
+    pkgs.jq
+    pkgs.julia-bin
+    pkgs.just
+    pkgs.lazygit
+    pkgs.ncdu
+    pkgs.openconnect
+    pkgs.pass
+    pkgs.powerline
+    pkgs.ripgrep
+    pkgs.sqlite
+    pkgs.stow
+    pkgs.subnetcalc
+    pkgs.tio
+    pkgs.wget
+    pkgs.xz
+    pkgs.uv
+  ]
+  ++ (with pkgs.python313Packages; [
+    python
+    pip
+  ]);
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
