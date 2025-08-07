@@ -122,6 +122,11 @@
     EDITOR = "nvim";
   };
 
+  # add ~/.local/bin to last of paths
+  home.sessionPath = [
+    "$HOME/.local/bin"
+  ];
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 

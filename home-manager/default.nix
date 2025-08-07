@@ -67,6 +67,11 @@
     usbutils # lsusb
   ];
 
+  # add ~/.local/bin to last of paths
+  home.sessionPath = [
+    "$HOME/.local/bin"
+  ];
+
   # basic configuration of git, please change to your own
   programs.git = {
     enable = true;
