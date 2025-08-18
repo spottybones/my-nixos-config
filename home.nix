@@ -66,7 +66,6 @@
     pkgs.google-cloud-sdk
     pkgs.htop
     pkgs.jq
-    pkgs.julia-bin
     pkgs.just
     pkgs.lazygit
     pkgs.ncdu
