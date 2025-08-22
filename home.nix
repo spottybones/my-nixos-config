@@ -71,7 +71,6 @@
     pkgs.ncdu
     pkgs.openconnect
     pkgs.pass
-    pkgs.powerline
     pkgs.ripgrep
     pkgs.sqlite
     pkgs.stow

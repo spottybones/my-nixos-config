@@ -39,7 +39,6 @@
     devenv
     gh
     just
-    powerline
     cargo
     clang
     nodejs_20

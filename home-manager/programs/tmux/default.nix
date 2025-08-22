@@ -1,5 +1,12 @@
-{ pkgs, ... }:
+{
+  config,
+  pkgs,
+  ...
+}:
 
+let
+  tmuxPowerlinePath = "${config.home.homeDirectory}/.config/nix//home-manager/programs/tmux/tmux-powerline";
+in
 {
   programs.tmux = {
     package = pkgs.tmux;
@@ -14,6 +21,7 @@
     sensibleOnTop = true;
     plugins = with pkgs.tmuxPlugins; [
       pain-control
+      tmux-powerline
     ];
 
     extraConfig = ''
@@ -58,10 +66,6 @@
       unbind p
       bind p paste-buffer
 
-      # Use powerline for the status line
-      run-shell "powerline-daemon -q"
-      run-shell "powerline-config tmux setup"
-
       # create a custom command killing direnv in case it hangs
       set -s command-alias[100] 'kill-direnv=run-shell "killall direnv"'
 
@@ -69,4 +73,7 @@
       set -gu default-command
     '';
   };
+
+  xdg.configFile."tmux-powerline".source = config.lib.file.mkOutOfStoreSymlink tmuxPowerlinePath;
+
 }
