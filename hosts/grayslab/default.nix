@@ -98,4 +98,13 @@
     ]
     ++ [ pkgs.powerline-symbols ];
 
+  # macOS customizations
+  system.defaults.dock = {
+    autohide = true;
+    magnification = false;
+    orientation = "left";
+    show-recents = false;
+    static-only = true;
+  };
+
 }
