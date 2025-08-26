@@ -102,7 +102,7 @@
               useGlobalPkgs = true;
               useUserPackages = true;
               backupFileExtension = "bak";
-              users.scott = import ./home.nix;
+              users.scott = import ./hosts/grayslab/home.nix;
             };
           }
         ];
