@@ -5,7 +5,7 @@
 }:
 
 let
-  tmuxPowerlinePath = "${config.home.homeDirectory}/.config/nix//home-manager/programs/tmux/tmux-powerline";
+  tmuxPowerlinePath = "${config.home.homeDirectory}/.config/nix/home-manager/programs/tmux/tmux-powerline";
 in
 {
   programs.tmux = {
