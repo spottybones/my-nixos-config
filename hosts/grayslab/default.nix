@@ -10,11 +10,41 @@
     pkgs.vim
   ];
 
+  # set up homebrew
+  homebrew = {
+    enable = true;
+    onActivation = {
+      autoUpdate = true;
+      # cleanup = "zap";
+      upgrade = true;
+    };
+    brews = [ ];
+    casks = [
+      "1password"
+      "acorn"
+      "bbedit"
+      "discord"
+      "firefox"
+      "google-chrome"
+      "google-drive"
+      "inkscape"
+      "iterm2"
+      "kitty"
+      "moom"
+      "signal"
+      "wezterm"
+    ];
+    # masApps = { };
+  };
+
   # Declare user running nix-darwin
   users.users.scott = {
     name = "scott";
     home = "/Users/scott";
   };
+
+  # set scott as primaryUser
+  system.primaryUser = "scott";
 
   # Necessary for using flakes on this system.
   nix.settings.experimental-features = "nix-command flakes";
