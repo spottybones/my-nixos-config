@@ -98,6 +98,7 @@
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
+    ".config/wezterm/wezterm.lua".source = ../../home-manager/programs/wezterm/wezterm.lua;
   };
 
   # Home Manager can also manage your environment variables through
