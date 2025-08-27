@@ -35,6 +35,7 @@
       "moom"
       "signal"
       "wezterm"
+      "yubico-authenticator"
     ];
     # masApps = { };
   };
