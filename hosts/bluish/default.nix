@@ -18,10 +18,12 @@
       # cleanup = "zap";
       upgrade = true;
     };
+    taps = [ "nikitabobko/tap" ];
     brews = [ ];
     casks = [
       "1password"
       "acorn"
+      "aerospace"
       "bbedit"
       "discord"
       "firefox"

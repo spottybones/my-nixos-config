@@ -131,4 +131,9 @@
 
   # enable XDG directory support
   xdg.enable = true;
+
+  # aerospace configuration
+  xdg.configFile."aerospace/aerospace.toml".source =
+    ../../home-manager/programs/aerospace/aerospace.toml;
+
 }
