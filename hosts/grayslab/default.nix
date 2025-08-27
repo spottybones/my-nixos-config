@@ -30,6 +30,7 @@
       "inkscape"
       "iterm2"
       "kitty"
+      "logitech-options"
       "moom"
       "signal"
       "wezterm"
