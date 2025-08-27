@@ -107,5 +107,23 @@
           }
         ];
       };
+      darwinConfigurations."Bluish" = nix-darwin.lib.darwinSystem {
+        system = "aarch64-darwin";
+        specialArgs = {
+          inherit self;
+        };
+        modules = [
+          ./hosts/bluish
+          home-manager.darwinModules.home-manager
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              backupFileExtension = "bak";
+              users.scott = import ./hosts/bluish/home.nix;
+            };
+          }
+        ];
+      };
     };
 }
