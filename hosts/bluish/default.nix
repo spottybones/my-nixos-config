@@ -37,6 +37,7 @@
       "signal"
       "wezterm"
       "yubico-authenticator"
+      "zoom"
     ];
     # masApps = { };
   };
