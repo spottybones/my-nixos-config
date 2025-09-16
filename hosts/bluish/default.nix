@@ -34,6 +34,7 @@
       "kitty"
       "logitech-options"
       "moom"
+      "pocket-casts"
       "signal"
       "wezterm"
       "yubico-authenticator"
