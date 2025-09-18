@@ -26,8 +26,8 @@ config.custom_block_glyphs = true
 -- config.default_ssh_auth_sock = "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
 
 config.window_padding = {
-	left = 0,
-	right = 0,
+	left = 6,
+	right = 6,
 	top = 10,
 	bottom = 10,
 }
