@@ -6,7 +6,7 @@ config.color_scheme = "Catppuccin Mocha"
 
 config.font = wezterm.font({
 	family = "FiraCode Nerd Font Mono",
-	weight = "Regular",
+	weight = 450,
 })
 config.font_size = 14.0
 config.foreground_text_hsb = {
