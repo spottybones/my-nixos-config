@@ -80,10 +80,11 @@
 
   # import program configuration
   imports = [
-    ./programs/zsh
-    ./programs/tmux
-    ./programs/neovim
     ./programs/bat
+    ./programs/lazygit
+    ./programs/neovim
+    ./programs/tmux
+    ./programs/zsh
   ];
 
   # This value determines the home Manager release that your

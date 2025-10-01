@@ -3,10 +3,11 @@
 {
   # import package configurations
   imports = [
+    ../../home-manager/programs/bat
+    ../../home-manager/programs/lazygit
+    ../../home-manager/programs/neovim
     ../../home-manager/programs/tmux
     ../../home-manager/programs/zsh
-    ../../home-manager/programs/neovim
-    ../../home-manager/programs/bat
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
