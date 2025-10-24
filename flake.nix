@@ -18,10 +18,9 @@
     inputs@{
       self,
       nixpkgs,
-      nixpkgs-darwin,
       nix-darwin,
       home-manager,
-      pre-commit-hooks,
+      ...
     }:
 
     let
