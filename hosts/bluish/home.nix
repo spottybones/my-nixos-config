@@ -5,7 +5,7 @@
   imports = [
     ../../home-manager/programs/bat
     ../../home-manager/programs/lazygit
-    ../../home-manager/programs/neovim
+    ../../home-manager/programs/neovim-minimax
     ../../home-manager/programs/tmux
     ../../home-manager/programs/zsh
   ];
@@ -119,6 +119,7 @@
   #
   home.sessionVariables = {
     EDITOR = "nvim";
+    NVIM_APPNAME = "nvim-minimax";
   };
 
   # add ~/.local/bin to last of paths

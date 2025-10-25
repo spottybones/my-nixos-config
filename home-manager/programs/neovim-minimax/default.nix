@@ -15,10 +15,17 @@ in
     withRuby = false;
 
     extraPackages = with pkgs; [
+      bash-language-server
+      clang
+      ruff
+      rust-analyzer
+      lua51Packages.lua
       lua51Packages.luarocks
       tree-sitter
+      nil
+      nixfmt-rfc-style
     ];
   };
 
-  xdg.configFile."nvim".source = config.lib.file.mkOutOfStoreSymlink nvimPath;
+  xdg.configFile."nvim-minimax".source = config.lib.file.mkOutOfStoreSymlink nvimPath;
 }
