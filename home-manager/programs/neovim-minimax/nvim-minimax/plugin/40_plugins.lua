@@ -94,8 +94,10 @@ now_if_args(function()
   -- Use `:h vim.lsp.config()` or 'ftplugin/lsp/' directory to configure servers.
   -- Uncomment and tweak the following `vim.lsp.enable()` call to enable servers.
   vim.lsp.enable({
+    'basedpyright',
     'lua_ls',
     'nixd',
+    'ruff',
   })
 end)
 
@@ -120,6 +122,7 @@ later(function()
     formatters_by_ft = {
       lua = { 'stylua' },
       nix = { 'nixfmt' },
+      python = { 'ruff' },
     },
     format_on_save = {
       lsp_format = 'fallback',
