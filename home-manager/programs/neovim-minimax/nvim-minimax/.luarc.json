@@ -1,0 +1,22 @@
+{
+  "$schema": "https://raw.githubusercontent.com/LuaLS/vscode-lua/master/setting/schema.json",
+  "diagnostics.globals": [
+    "vim",
+    "MiniDeps",
+    "MiniBasics",
+    "MiniCompletion",
+    "MiniExtra",
+    "MiniFiles",
+    "MiniIcons",
+    "MiniKeymap",
+    "MiniMax",
+    "MiniMisc"
+  ],
+  "runtime.version": "LuaJIT",
+  "workspace.library": [
+    "$VIMRUNTIME",
+    "${3rd}/luv/library",
+    "$HOME/.local/share/nvim-minimax/site/pack/deps/start/mini.nvim"
+  ],
+  "workspace.checkThirdParty": false
+}
