@@ -7,6 +7,7 @@
 -- General mappings ===========================================================
 
 -- Use this section to add custom general mappings. See `:h vim.keymap.set()`.
+vim.keymap.set('i', 'jk', '<ESC>', { desc = 'Quick exit from insert mode' })
 
 -- An example helper to create a Normal mode mapping
 local nmap = function(lhs, rhs, desc)
