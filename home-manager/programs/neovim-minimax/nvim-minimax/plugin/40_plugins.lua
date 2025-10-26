@@ -116,7 +116,13 @@ later(function()
   require('conform').setup({
     -- Map of filetype to formatters
     -- Make sure that necessary CLI tool is available
-    -- formatters_by_ft = { lua = { 'stylua' } },
+    formatters_by_ft = {
+      lua = { 'stylua' },
+    },
+    format_on_save = {
+      lsp_format = 'fallback',
+      timeout_ms = 500,
+    },
   })
 end)
 

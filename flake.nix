@@ -62,6 +62,7 @@
             self.checks.${system}.pre-commit-check.enabledPackages
             ++ (with nixpkgs.legacyPackages.${system}; [
               lua-language-server
+              stylua
             ]);
         };
       });
