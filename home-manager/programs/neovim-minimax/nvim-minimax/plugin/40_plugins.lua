@@ -95,6 +95,7 @@ now_if_args(function()
   -- Uncomment and tweak the following `vim.lsp.enable()` call to enable servers.
   vim.lsp.enable({
     'lua_ls',
+    'nixd',
   })
 end)
 
@@ -118,6 +119,7 @@ later(function()
     -- Make sure that necessary CLI tool is available
     formatters_by_ft = {
       lua = { 'stylua' },
+      nix = { 'nixfmt' },
     },
     format_on_save = {
       lsp_format = 'fallback',
@@ -156,12 +158,12 @@ later(function() add('rafamadriz/friendly-snippets') end)
 -- have full support of its highlight groups. Use if you don't like 'miniwinter'
 -- enabled in 'plugin/30_mini.lua' or other suggested 'mini.hues' based ones.
 MiniDeps.now(function()
---   -- Install only those that you need
---   add('sainnhe/everforest')
---   add('Shatur/neovim-ayu')
---   add('ellisonleao/gruvbox.nvim')
+  --   -- Install only those that you need
+  --   add('sainnhe/everforest')
+  --   add('Shatur/neovim-ayu')
+  --   add('ellisonleao/gruvbox.nvim')
   add('folke/tokyonight.nvim')
---
---   -- Enable only one
+  --
+  --   -- Enable only one
   vim.cmd('color tokyonight-moon')
 end)
