@@ -95,6 +95,7 @@ now_if_args(function()
   -- Uncomment and tweak the following `vim.lsp.enable()` call to enable servers.
   vim.lsp.enable({
     'basedpyright',
+    'just',
     'lua_ls',
     'nixd',
     'ruff',
@@ -123,6 +124,7 @@ later(function()
       lua = { 'stylua' },
       nix = { 'nixfmt' },
       python = { 'ruff' },
+      just = { 'just' },
     },
     format_on_save = {
       lsp_format = 'fallback',
