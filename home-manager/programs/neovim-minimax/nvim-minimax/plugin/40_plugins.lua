@@ -172,3 +172,15 @@ MiniDeps.now(function()
   --   -- Enable only one
   vim.cmd('color tokyonight-moon')
 end)
+
+-- set up Snacks for Lazygit
+MiniDeps.now(function()
+  add('folke/snacks.nvim')
+  require('snacks').setup()
+  lazy = false
+  priority = 1000
+  opts = {
+    explorer = { enabled = true },
+    lazygit = { enabled = true },
+  }
+end)
