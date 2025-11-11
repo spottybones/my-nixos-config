@@ -48,10 +48,8 @@
     pkgs._1password-cli
     pkgs.atuin
     pkgs.bat
-    pkgs.cargo
     pkgs.coreutils
     pkgs.delta
-    pkgs.devenv
     pkgs.direnv
     pkgs.eza
     pkgs.fd
@@ -63,7 +61,6 @@
     pkgs.git-crypt
     pkgs.gnupg
     pkgs.gnused
-    pkgs.go
     pkgs.google-cloud-sdk
     pkgs.htop
     pkgs.jq

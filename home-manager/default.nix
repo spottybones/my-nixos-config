@@ -40,7 +40,6 @@
     gh
     just
     cargo
-    clang
     nodejs_20
     uv
 

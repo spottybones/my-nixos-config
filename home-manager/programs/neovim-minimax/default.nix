@@ -16,7 +16,6 @@ in
 
     extraPackages = with pkgs; [
       bash-language-server
-      clang
       ruff
       rust-analyzer
       lua51Packages.lua
