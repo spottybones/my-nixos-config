@@ -135,6 +135,25 @@ later(function()
   })
 end)
 
+-- Linters =====
+--
+-- Set up nvim-lint for extra tools
+later(function()
+  add('mfussenegger/nvim-lint')
+  local lint = require('lint')
+  lint.linters_by_ft = {
+    c = { 'cppcheck' },
+    cpp = { 'cppcheck' },
+  }
+  vim.api.nvim_create_autocmd({ 'BufWritePost' }, {
+    callback = function()
+      -- try_lint without arguments runs the linters defined in `linters_by_ft`
+      -- for the current filetype
+      lint.try_lint()
+    end,
+  })
+end)
+
 -- Snippets ===================================================================
 
 -- Although 'mini.snippets' provides functionality to manage snippet files, it
