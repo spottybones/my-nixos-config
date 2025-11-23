@@ -517,7 +517,12 @@ end)
 --
 -- See also:
 -- - `:h MiniIndentscope.gen_animation` - available animation rules
-later(function() require('mini.indentscope').setup() end)
+later(function()
+  require('mini.indentscope').setup({
+    draw = { delay = 10, animation = function(s, n) return 10 end },
+    symbol = '│',
+  })
+end)
 
 -- Jump to next/previous single character. It implements "smarter `fFtT` keys"
 -- (see `:h f`) that work across multiple lines, start "jumping mode", and
