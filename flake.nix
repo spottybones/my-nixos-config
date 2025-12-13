@@ -48,7 +48,7 @@
           hooks = {
             check-added-large-files.enable = true;
             end-of-file-fixer.enable = true;
-            flake-checker.enable = true;
+            # flake-checker.enable = true; # TODO: re-enable after upgrade to v2.9 of this hook
             nixfmt-rfc-style.enable = true;
             trim-trailing-whitespace.enable = true;
           };
