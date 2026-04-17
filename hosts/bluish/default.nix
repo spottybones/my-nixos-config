@@ -19,7 +19,7 @@
       upgrade = true;
     };
     taps = [ "nikitabobko/tap" ];
-    brews = [ ];
+    brews = [ "hugo" ];
     casks = [
       "1password"
       "acorn"
