@@ -73,8 +73,8 @@
   # basic configuration of git, please change to your own
   programs.git = {
     enable = true;
-    userName = "Scott Burns";
-    userEmail = "scott@lentigo.net";
+    settings.user.name = "Scott Burns";
+    settings.user.email = "scott@lentigo.net";
   };
 
   # import program configuration
