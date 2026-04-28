@@ -128,6 +128,16 @@
               backupFileExtension = "bak";
               users.scott = import ./hosts/bluish/home.nix;
             };
+            nixpkgs.overlays = [
+              (_final: prev: {
+                # direnv = prev.direnv.overrideAttrs (old: {
+                #   doCheck = !prev.stdenv.hostPlatform.isDarwin;
+                # });
+                fish = prev.fish.overrideAttrs (_old: {
+                  NIX_FORCE_LOCAL_REBUILD = "darwin-codesign-fix";
+                });
+              })
+            ];
           }
         ];
       };
