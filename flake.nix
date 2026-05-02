@@ -4,6 +4,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-25.11-darwin";
+    nixpkgs-c6d6588.url = "github:NixOS/nixpkgs/c6d65881c5624c9cae5ea6cedef24699b0c0a4c0";
     nix-darwin.url = "github:nix-darwin/nix-darwin/nix-darwin-25.11";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs-darwin";
     home-manager.url = "github:nix-community/home-manager/release-25.11";
@@ -18,6 +19,7 @@
     inputs@{
       self,
       nixpkgs,
+      nixpkgs-c6d6588,
       nix-darwin,
       home-manager,
       ...
@@ -130,13 +132,14 @@
             };
             nixpkgs.overlays = [
               (_final: prev: {
-                # direnv = prev.direnv.overrideAttrs (old: {
-                #   doCheck = !prev.stdenv.hostPlatform.isDarwin;
-                # });
                 fish = prev.fish.overrideAttrs (_old: {
                   NIX_FORCE_LOCAL_REBUILD = "darwin-codesign-fix";
                 });
               })
+              (_final: prev: {
+                pkgs-c6d6588 = import nixpkgs-c6d6588 { system = "aarch64-darwin"; };
+              })
+
             ];
           }
         ];
