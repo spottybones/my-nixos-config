@@ -50,8 +50,8 @@
           hooks = {
             check-added-large-files.enable = true;
             end-of-file-fixer.enable = true;
-            nixfmt-rfc-style.enable = true;
             # flake-checker.enable = true;
+            nixfmt.enable = true;
             trim-trailing-whitespace.enable = true;
           };
         };
@@ -65,7 +65,7 @@
             ++ (with nixpkgs.legacyPackages.${system}; [
               lua-language-server
               nixd
-              nixfmt-rfc-style
+              nixfmt
               stylua
             ]);
         };

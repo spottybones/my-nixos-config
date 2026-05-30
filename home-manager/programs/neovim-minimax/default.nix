@@ -23,7 +23,7 @@ in
       lua51Packages.luarocks
       tree-sitter
       nil
-      nixfmt-rfc-style
+      nixfmt
     ];
   };
 
