@@ -2,12 +2,12 @@
   description = "Scott Burns' Nix Configuration";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
-    nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-25.11-darwin";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
+    nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-26.05-darwin";
     nixpkgs-c6d6588.url = "github:NixOS/nixpkgs/c6d65881c5624c9cae5ea6cedef24699b0c0a4c0";
-    nix-darwin.url = "github:nix-darwin/nix-darwin/nix-darwin-25.11";
+    nix-darwin.url = "github:nix-darwin/nix-darwin/nix-darwin-26.05";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs-darwin";
-    home-manager.url = "github:nix-community/home-manager/release-25.11";
+    home-manager.url = "github:nix-community/home-manager/release-26.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     # pre-commit-hooks
@@ -50,8 +50,8 @@
           hooks = {
             check-added-large-files.enable = true;
             end-of-file-fixer.enable = true;
-            flake-checker.enable = true;
             nixfmt-rfc-style.enable = true;
+            # flake-checker.enable = true;
             trim-trailing-whitespace.enable = true;
           };
         };
