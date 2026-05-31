@@ -13,7 +13,6 @@ in
     withPython3 = true;
     withNodeJs = true;
     withRuby = false;
-    package = pkgs.pkgs-c6d6588.neovim-unwrapped;
 
     extraPackages = with pkgs; [
       bash-language-server
