@@ -48,7 +48,13 @@
           hooks = {
             check-added-large-files.enable = true;
             end-of-file-fixer.enable = true;
-            # flake-checker.enable = true;
+            flake-checker = {
+              enable = true;
+              args = [
+                "--condition"
+                "gitRef.contains(\"26.05\")"
+              ];
+            };
             nixfmt.enable = true;
             trim-trailing-whitespace.enable = true;
           };
