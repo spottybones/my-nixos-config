@@ -64,3 +64,7 @@ cleanup-garbage:
 # update locked system and home-manager dependencies
 update-dependencies:
     @nix flake update
+
+# run pre-commit hooks manually
+run-pre-commit-hooks:
+    @nix develop -c pre-commit run -a
