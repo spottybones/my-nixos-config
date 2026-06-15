@@ -23,7 +23,6 @@
     casks = [
       "1password"
       "acorn"
-      "aerospace"
       "bbedit"
       "discord"
       "firefox"

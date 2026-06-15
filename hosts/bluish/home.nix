@@ -130,10 +130,6 @@
   # enable XDG directory support
   xdg.enable = true;
 
-  # aerospace configuration
-  xdg.configFile."aerospace/aerospace.toml".source =
-    ../../home-manager/programs/aerospace/aerospace.toml;
-
   # wezterm configuration
   xdg.configFile."wezterm/wezterm.lua".source = ../../home-manager/programs/wezterm/wezterm.lua;
 }
