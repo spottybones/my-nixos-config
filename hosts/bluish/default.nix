@@ -31,7 +31,7 @@
       "inkscape"
       "iterm2"
       "kitty"
-      "logitech-options"
+      "logi-options+"
       "moom"
       "pocket-casts"
       "signal"
