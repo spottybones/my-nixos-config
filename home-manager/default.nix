@@ -40,7 +40,7 @@
     gh
     just
     cargo
-    nodejs_20
+    nodejs
     uv
 
     # networking tools
