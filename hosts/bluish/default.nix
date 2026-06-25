@@ -1,6 +1,7 @@
 {
   self,
   pkgs,
+  inputs,
   ...
 }:
 
@@ -54,6 +55,7 @@
   # Necessary for using flakes on this system.
   nix.settings.experimental-features = "nix-command flakes";
   nix.settings.trusted-users = [ "scott" ];
+  nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
 
   # enable automatic store optimisation
   nix.optimise = {

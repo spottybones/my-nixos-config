@@ -122,7 +122,7 @@
       darwinConfigurations."Bluish" = nix-darwin.lib.darwinSystem {
         system = "aarch64-darwin";
         specialArgs = {
-          inherit self;
+          inherit inputs self;
         };
         modules = [
           ./hosts/bluish
