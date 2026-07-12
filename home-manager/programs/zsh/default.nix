@@ -1,5 +1,10 @@
 # my zsh configuration
-{ pkgs, lib, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 
 {
   programs.zsh = {
@@ -36,6 +41,8 @@
       # # enabled, disable it to prevent conflict with Google Admin Manager "gam".
       [[ -n $(alias gam) ]] && unalias gam
     '';
+
+    dotDir = "${config.xdg.configHome}/zsh";
   };
 
   programs.direnv = {
