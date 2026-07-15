@@ -275,7 +275,6 @@ later(function()
       Config.leader_group_clues,
       miniclue.gen_clues.builtin_completion(),
       miniclue.gen_clues.g(),
-      miniclue.gen_clues.z(),
       miniclue.gen_clues.marks(),
       miniclue.gen_clues.registers(),
       -- This creates a submode for window resize mappings. Try the following:
