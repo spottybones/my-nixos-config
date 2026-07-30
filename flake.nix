@@ -84,22 +84,6 @@
             home-manager-options
           ];
         };
-        nixos = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          modules = [
-            ./hosts/nixos
-            home-manager.nixosModules.home-manager
-            home-manager-options
-          ];
-        };
-        mneme = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          modules = [
-            ./hosts/mneme
-            home-manager.nixosModules.home-manager
-            home-manager-options
-          ];
-        };
       };
       darwinConfigurations."GraySlab" = nix-darwin.lib.darwinSystem {
         system = "x86_64-darwin";
