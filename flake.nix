@@ -12,6 +12,8 @@
     # pre-commit-hooks
     pre-commit-hooks.url = "github:cachix/git-hooks.nix";
     pre-commit-hooks.inputs.nixpkgs.follows = "nixpkgs";
+
+    flake-parts.url = "github:hercules-ci/flake-parts";
   };
 
   outputs =
@@ -20,6 +22,7 @@
       nixpkgs,
       nix-darwin,
       home-manager,
+      flake-parts,
       ...
     }:
 
@@ -41,85 +44,103 @@
       ];
 
     in
-    {
-      checks = forAllSystems (system: {
-        pre-commit-check = inputs.pre-commit-hooks.lib.${system}.run {
-          src = ./.;
-          hooks = {
-            check-added-large-files.enable = true;
-            end-of-file-fixer.enable = true;
-            flake-checker = {
-              enable = true;
-              args = [
-                "--condition"
-                "gitRef.contains(\"26.05\")"
+    flake-parts.lib.mkFlake { inherit inputs; } (
+      top@{
+        config,
+        withSystem,
+        moduleWithSystem,
+        ...
+      }:
+      {
+        imports = [ ];
+        flake = {
+          checks = forAllSystems (system: {
+            pre-commit-check = inputs.pre-commit-hooks.lib.${system}.run {
+              src = ./.;
+              hooks = {
+                check-added-large-files.enable = true;
+                end-of-file-fixer.enable = true;
+                flake-checker = {
+                  enable = true;
+                  args = [
+                    "--condition"
+                    "gitRef.contains(\"26.05\")"
+                  ];
+                };
+                nixfmt.enable = true;
+                trim-trailing-whitespace.enable = true;
+              };
+            };
+          });
+
+          devShells = forAllSystems (system: {
+            default = nixpkgs.legacyPackages.${system}.mkShell {
+              inherit (self.checks.${system}.pre-commit-check) shellHook;
+              buildInputs =
+                self.checks.${system}.pre-commit-check.enabledPackages
+                ++ (with nixpkgs.legacyPackages.${system}; [
+                  lua-language-server
+                  nixd
+                  nixfmt
+                  stylua
+                ]);
+            };
+          });
+
+          nixosConfigurations = {
+            jupiter = nixpkgs.lib.nixosSystem {
+              system = "x86_64-linux";
+              modules = [
+                ./hosts/jupiter
+                home-manager.nixosModules.home-manager
+                home-manager-options
               ];
             };
-            nixfmt.enable = true;
-            trim-trailing-whitespace.enable = true;
+          };
+          darwinConfigurations."GraySlab" = nix-darwin.lib.darwinSystem {
+            system = "x86_64-darwin";
+            specialArgs = {
+              inherit self;
+            };
+            modules = [
+              ./hosts/grayslab
+              home-manager.darwinModules.home-manager
+              {
+                home-manager = {
+                  useGlobalPkgs = true;
+                  useUserPackages = true;
+                  backupFileExtension = "bak";
+                  users.scott = import ./hosts/grayslab/home.nix;
+                };
+              }
+            ];
+          };
+          darwinConfigurations."Bluish" = nix-darwin.lib.darwinSystem {
+            system = "aarch64-darwin";
+            specialArgs = {
+              inherit inputs self;
+            };
+            modules = [
+              ./hosts/bluish
+              home-manager.darwinModules.home-manager
+              {
+                home-manager = {
+                  useGlobalPkgs = true;
+                  useUserPackages = true;
+                  backupFileExtension = "bak";
+                  users.scott = import ./hosts/bluish/home.nix;
+                };
+              }
+            ];
           };
         };
-      });
-
-      devShells = forAllSystems (system: {
-        default = nixpkgs.legacyPackages.${system}.mkShell {
-          inherit (self.checks.${system}.pre-commit-check) shellHook;
-          buildInputs =
-            self.checks.${system}.pre-commit-check.enabledPackages
-            ++ (with nixpkgs.legacyPackages.${system}; [
-              lua-language-server
-              nixd
-              nixfmt
-              stylua
-            ]);
-        };
-      });
-
-      nixosConfigurations = {
-        jupiter = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          modules = [
-            ./hosts/jupiter
-            home-manager.nixosModules.home-manager
-            home-manager-options
-          ];
-        };
-      };
-      darwinConfigurations."GraySlab" = nix-darwin.lib.darwinSystem {
-        system = "x86_64-darwin";
-        specialArgs = {
-          inherit self;
-        };
-        modules = [
-          ./hosts/grayslab
-          home-manager.darwinModules.home-manager
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              backupFileExtension = "bak";
-              users.scott = import ./hosts/grayslab/home.nix;
-            };
-          }
+        systems = [
+          "x86_64-linux"
+          "aarch64-darwin"
         ];
-      };
-      darwinConfigurations."Bluish" = nix-darwin.lib.darwinSystem {
-        system = "aarch64-darwin";
-        specialArgs = {
-          inherit inputs self;
+        perSystem = { config, pkgs, ... }: {
+          # recommend move all package definitions here
         };
-        modules = [
-          ./hosts/bluish
-          home-manager.darwinModules.home-manager
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              backupFileExtension = "bak";
-              users.scott = import ./hosts/bluish/home.nix;
-            };
-          }
-        ];
-      };
-    };
+      }
+    );
 }
