@@ -17,6 +17,11 @@
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    devshell = {
+      url = "github:numtide/devshell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -57,22 +62,9 @@
       {
         imports = [
           inputs.git-hooks.flakeModule
+          inputs.devshell.flakeModule
         ];
         flake = {
-
-          devShells = forAllSystems (system: {
-            default = nixpkgs.legacyPackages.${system}.mkShell {
-              inherit (self.checks.${system}.pre-commit-check) shellHook;
-              buildInputs =
-                self.checks.${system}.pre-commit-check.enabledPackages
-                ++ (with nixpkgs.legacyPackages.${system}; [
-                  lua-language-server
-                  nixd
-                  nixfmt
-                  stylua
-                ]);
-            };
-          });
 
           nixosConfigurations = {
             jupiter = nixpkgs.lib.nixosSystem {
@@ -146,6 +138,20 @@
                 trim-trailing-whitespace.enable = true;
               };
             };
+          };
+
+          devShells.default = pkgs.mkShell {
+            nativeBuildInputs = with pkgs; [
+              lua-language-server
+              nixd
+              nixfmt
+              stylua
+              pre-commit
+            ];
+
+            shellHook = ''
+              ${config.pre-commit.settings.installationScript}
+            '';
           };
         };
       }
