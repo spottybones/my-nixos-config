@@ -64,6 +64,7 @@
           inputs.git-hooks.flakeModule
           inputs.devshell.flakeModule
         ];
+
         flake = {
 
           nixosConfigurations = {
@@ -76,6 +77,7 @@
               ];
             };
           };
+
           darwinConfigurations."GraySlab" = nix-darwin.lib.darwinSystem {
             system = "x86_64-darwin";
             specialArgs = {
@@ -94,6 +96,7 @@
               }
             ];
           };
+
           darwinConfigurations."Bluish" = nix-darwin.lib.darwinSystem {
             system = "aarch64-darwin";
             specialArgs = {
@@ -113,10 +116,12 @@
             ];
           };
         };
+
         systems = [
           "x86_64-linux"
           "aarch64-darwin"
         ];
+
         perSystem = { config, pkgs, ... }: {
           # recommend move all package definitions here
           pre-commit = {
