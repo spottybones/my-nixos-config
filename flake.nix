@@ -17,6 +17,8 @@
       url = "github:hercules-ci/flake-parts";
     };
 
+    import-tree.url = "github:vic/import-tree";
+
     devshell = {
       url = "github:numtide/devshell";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -59,6 +61,7 @@
         ...
       }:
       {
+
         imports = [
           inputs.git-hooks.flakeModule
           inputs.devshell.flakeModule
