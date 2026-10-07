@@ -35,24 +35,6 @@
       ...
     }:
 
-    let
-      home-manager-options = {
-        home-manager = {
-          useGlobalPkgs = true;
-          useUserPackages = true;
-          backupFileExtension = "bak";
-          users.scott = import ./home-manager;
-        };
-      };
-
-      forAllSystems = nixpkgs.lib.genAttrs [
-        "x86_64-linux"
-        "aarch64-linux"
-        "x86_64-darwin"
-        "aarch64-darwin"
-      ];
-
-    in
     flake-parts.lib.mkFlake { inherit inputs; } (
       top@{
         config,
@@ -75,7 +57,14 @@
               modules = [
                 ./hosts/jupiter
                 home-manager.nixosModules.home-manager
-                home-manager-options
+                {
+                  home-manager = {
+                    useGlobalPkgs = true;
+                    useUserPackages = true;
+                    backupFileExtension = "bak";
+                    users.scott = import ./home-manager;
+                  };
+                }
               ];
             };
           };
