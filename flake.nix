@@ -15,6 +15,7 @@
 
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
+      inputs.nixpkgs-lib.follows = "nixpkgs";
     };
 
     import-tree.url = "github:vic/import-tree";
@@ -47,6 +48,8 @@
         imports = [
           inputs.git-hooks.flakeModule
           inputs.devshell.flakeModule
+          inputs.flake-parts.flakeModules.modules
+          (inputs.import-tree ./modules)
         ];
 
         flake = {
@@ -88,24 +91,6 @@
             ];
           };
 
-          darwinConfigurations."Bluish" = nix-darwin.lib.darwinSystem {
-            system = "aarch64-darwin";
-            specialArgs = {
-              inherit inputs self;
-            };
-            modules = [
-              ./hosts/bluish
-              home-manager.darwinModules.home-manager
-              {
-                home-manager = {
-                  useGlobalPkgs = true;
-                  useUserPackages = true;
-                  backupFileExtension = "bak";
-                  users.scott = import ./hosts/bluish/home.nix;
-                };
-              }
-            ];
-          };
         };
 
         systems = [

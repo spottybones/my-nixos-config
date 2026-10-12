@@ -83,7 +83,7 @@
   nixpkgs.hostPlatform = "aarch64-darwin";
 
   # Allow installation of unfree packages
-  nixpkgs.config.allowUnfreePredicate = (pkg: true);
+  # nixpkgs.config.allowUnfreePredicate = (pkg: true);
 
   # Use TouchID for sudo
   security.pam.services.sudo_local = {

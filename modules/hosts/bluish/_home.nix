@@ -1,15 +1,9 @@
-{ pkgs, lib, ... }:
-
 {
-  # import package configurations
-  imports = [
-    ../../home-manager/programs/bat
-    ../../home-manager/programs/lazygit
-    ../../home-manager/programs/neovim-minimax
-    ../../home-manager/programs/tmux
-    ../../home-manager/programs/zsh
-  ];
-
+  pkgs,
+  lib,
+  ...
+}:
+{
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "scott";
@@ -47,7 +41,6 @@
     # '')
     pkgs._1password-cli
     pkgs.atuin
-    pkgs.bat
     pkgs.coreutils
     pkgs.delta
     pkgs.direnv
@@ -126,10 +119,8 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+  # programs.bat.enable = true;
 
   # enable XDG directory support
   xdg.enable = true;
-
-  # wezterm configuration
-  xdg.configFile."wezterm/wezterm.lua".source = ../../home-manager/programs/wezterm/wezterm.lua;
 }
