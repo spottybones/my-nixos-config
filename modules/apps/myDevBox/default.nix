@@ -13,6 +13,7 @@ in
         homeManager.nvim-minimax
         homeManager.tmux
         homeManager.zsh
+        homeManager.git
       ];
 
       home.packages = [
