@@ -6,7 +6,7 @@
   ...
 }:
 let
-  inherit (config.flake.modules) homeManager;
+  inherit (config.flake.modules) homeManager darwin;
 in
 {
   perSystem = { system, ... }: {
@@ -26,6 +26,7 @@ in
       };
       modules = [
         ./_configuration.nix
+        darwin.homebrew
         # inputs.nixpkgs.nixosModules.readOnlyPkgs
         #use the configured packages from perSystem
         { nixpkgs.pkgs = pkgs; }
