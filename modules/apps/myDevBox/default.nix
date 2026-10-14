@@ -65,7 +65,7 @@ in
         pkgs.xz
         pkgs.uv
       ]
-      ++ (with pkgs.python313Packages; [
+      ++ (with pkgs.python314Packages; [
         python
         pip
       ]);
