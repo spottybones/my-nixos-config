@@ -47,7 +47,6 @@
 
         imports = [
           inputs.git-hooks.flakeModule
-          inputs.devshell.flakeModule
           inputs.flake-parts.flakeModules.modules
           (inputs.import-tree ./modules)
         ];
@@ -119,20 +118,6 @@
                 trim-trailing-whitespace.enable = true;
               };
             };
-          };
-
-          devShells.default = pkgs.mkShell {
-            nativeBuildInputs = with pkgs; [
-              lua-language-server
-              nixd
-              nixfmt
-              stylua
-              pre-commit
-            ];
-
-            shellHook = ''
-              ${config.pre-commit.settings.installationScript}
-            '';
           };
         };
       }
