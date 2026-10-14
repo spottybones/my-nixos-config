@@ -46,7 +46,6 @@
       {
 
         imports = [
-          inputs.git-hooks.flakeModule
           inputs.flake-parts.flakeModules.modules
           (inputs.import-tree ./modules)
         ];
@@ -97,29 +96,6 @@
           "aarch64-darwin"
         ];
 
-        perSystem = { config, pkgs, ... }: {
-          # recommend move all package definitions here
-          pre-commit = {
-            check.enable = true;
-            settings = {
-              enable = true;
-              src = ./.;
-              hooks = {
-                check-added-large-files.enable = true;
-                end-of-file-fixer.enable = true;
-                flake-checker = {
-                  enable = true;
-                  args = [
-                    "--condition"
-                    "gitRef.contains(\"26.05\")"
-                  ];
-                };
-                nixfmt.enable = true;
-                trim-trailing-whitespace.enable = true;
-              };
-            };
-          };
-        };
       }
     );
 }
