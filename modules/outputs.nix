@@ -33,14 +33,6 @@
     }
   ) config.configurations.darwin;
 
-  #  TODO: still need the following until we refactor all darwinConfigurations
-  # define "darwinConfigurations" as a lazyAttrsOf type so multiple
-  # declarations can be merged
-  options.flake.darwinConfigurations = lib.mkOption {
-    default = { };
-    type = lib.types.lazyAttrsOf lib.types.raw;
-  };
-
   options.configurations.nixos = lib.mkOption {
     type = lib.types.lazyAttrsOf (
       lib.types.submodule {
