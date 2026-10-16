@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, lib, ... }:
 let
   myUserName = "scott";
   myFullName = "Scott Burns";
@@ -21,6 +21,21 @@ in
 
   # inject home-manager user scott into Bluish config
   configurations.darwin.Bluish.module.home-manager.users.${myUserName}.imports = [
+    homeManager.${myUserName}
+  ];
+
+  configurations.darwin.GraySlab.module = {
+    # Declare scott as user running nix-darwin
+    users.users.${myUserName} = {
+      name = "${myUserName}";
+      home = "/Users/${myUserName}";
+    };
+    system.primaryUser = "${myUserName}";
+    nix.settings.trusted-users = [ "${myUserName}" ];
+  };
+
+  # inject home-manager user scott into Bluish config
+  configurations.darwin.GraySlab.module.home-manager.users.${myUserName}.imports = [
     homeManager.${myUserName}
   ];
 

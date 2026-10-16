@@ -69,31 +69,12 @@
               ];
             };
           };
-
-          darwinConfigurations."GraySlab" = nix-darwin.lib.darwinSystem {
-            system = "x86_64-darwin";
-            specialArgs = {
-              inherit self;
-            };
-            modules = [
-              ./hosts/grayslab
-              home-manager.darwinModules.home-manager
-              {
-                home-manager = {
-                  useGlobalPkgs = true;
-                  useUserPackages = true;
-                  backupFileExtension = "bak";
-                  users.scott = import ./hosts/grayslab/home.nix;
-                };
-              }
-            ];
-          };
-
         };
 
         systems = [
           "x86_64-linux"
           "aarch64-darwin"
+          "x86_64-darwin"
         ];
 
       }
