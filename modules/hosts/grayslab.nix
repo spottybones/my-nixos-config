@@ -16,7 +16,7 @@ in
       imports = [
         darwin.homebrew
         darwin.fonts
-        generic.nix-store
+        darwin.nix-store
         darwin.myMacOS
       ];
 

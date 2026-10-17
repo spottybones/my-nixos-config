@@ -1,7 +1,7 @@
 # nix store management
 { ... }:
 {
-  flake.modules.generic.nix-store = { ... }: {
+  flake.modules.darwin.nix-store = { ... }: {
     # enable automatic store optimisation
     nix.optimise = {
       automatic = true;
@@ -12,6 +12,15 @@
           Weekday = 7;
         }
       ];
+    };
+
+  };
+
+  flake.modules.nixos.nix-store = { ... }: {
+    # enable automatic store optimisation
+    nix.optimise = {
+      automatic = true;
+      dates = [ "03:45" ];
     };
 
   };
