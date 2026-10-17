@@ -1,16 +1,16 @@
-{ config, lib, ... }:
+{ config, ... }:
 let
   myUserName = "scott";
   myFullName = "Scott Burns";
   myEmail = "scott@lentigo.net";
+
   inherit (config.flake.modules) homeManager;
-in
-{
-  configurations.darwin.Bluish.module = {
 
-    # Declare scott as user running nix-darwin
+  # darwin user "scott"
+  flake.modules.darwin."user-${myUserName}" = {
     users.users.${myUserName} = {
       name = "${myUserName}";
+      description = "${myFullName}";
       home = "/Users/${myUserName}";
     };
 
@@ -18,26 +18,6 @@ in
 
     nix.settings.trusted-users = [ "${myUserName}" ];
   };
-
-  # inject home-manager user scott into Bluish config
-  configurations.darwin.Bluish.module.home-manager.users.${myUserName}.imports = [
-    homeManager.${myUserName}
-  ];
-
-  configurations.darwin.GraySlab.module = {
-    # Declare scott as user running nix-darwin
-    users.users.${myUserName} = {
-      name = "${myUserName}";
-      home = "/Users/${myUserName}";
-    };
-    system.primaryUser = "${myUserName}";
-    nix.settings.trusted-users = [ "${myUserName}" ];
-  };
-
-  # inject home-manager user scott into Bluish config
-  configurations.darwin.GraySlab.module.home-manager.users.${myUserName}.imports = [
-    homeManager.${myUserName}
-  ];
 
   # home manager for Scott
   flake.modules.homeManager.${myUserName} = { pkgs, lib, ... }: {
@@ -75,13 +55,26 @@ in
 
     # enable XDG directory support
     xdg.enable = true;
-  };
 
-  # git configuration for Scott
-  flake.modules.homeManager.git = { lib, ... }: {
+    # # git configuration for Scott
+    # flake.modules.homeManager.git = { lib, ... }: {
     programs.git.settings.user = {
       name = lib.mkDefault "${myFullName}";
       email = lib.mkDefault "${myEmail}";
     };
+    # };
   };
+in
+{
+
+  inherit flake;
+
+  # inject home-manager user scott into darwin configurations
+  configurations.darwin.Bluish.module.home-manager.users.${myUserName}.imports = [
+    homeManager.${myUserName}
+  ];
+
+  configurations.darwin.GraySlab.module.home-manager.users.${myUserName}.imports = [
+    homeManager.${myUserName}
+  ];
 }

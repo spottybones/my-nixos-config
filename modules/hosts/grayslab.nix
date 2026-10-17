@@ -3,7 +3,7 @@
   ...
 }:
 let
-  inherit (config.flake.modules) darwin generic;
+  inherit (config.flake.modules) darwin;
 in
 {
   configurations.darwin.GraySlab.module =
@@ -18,6 +18,7 @@ in
         darwin.fonts
         darwin.nix-store
         darwin.myMacOS
+        darwin.user-scott
       ];
 
       # NIX configuration
