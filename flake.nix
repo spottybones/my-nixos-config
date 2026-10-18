@@ -50,27 +50,6 @@
           (inputs.import-tree ./modules)
         ];
 
-        flake = {
-
-          nixosConfigurations = {
-            jupiter = nixpkgs.lib.nixosSystem {
-              system = "x86_64-linux";
-              modules = [
-                ./hosts/jupiter
-                home-manager.nixosModules.home-manager
-                {
-                  home-manager = {
-                    useGlobalPkgs = true;
-                    useUserPackages = true;
-                    backupFileExtension = "bak";
-                    users.scott = import ./home-manager;
-                  };
-                }
-              ];
-            };
-          };
-        };
-
         systems = [
           "x86_64-linux"
           "aarch64-darwin"
