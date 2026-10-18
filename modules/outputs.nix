@@ -47,6 +47,7 @@
   config.flake.nixosConfigurations = lib.mapAttrs (
     _name: host:
     inputs.nixpkgs.lib.nixosSystem {
+      specialArgs = { inherit self inputs; };
       modules = [
         inputs.home-manager.nixosModules.home-manager
         {
