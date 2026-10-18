@@ -19,6 +19,31 @@ let
     nix.settings.trusted-users = [ "${myUserName}" ];
   };
 
+  # nixos user "scott"
+  flake.modules.nixos."user-${myUserName}" = { pkgs, ... }: {
+    users.users.${myUserName} = {
+      name = "${myUserName}";
+      description = "${myFullName}";
+      home = "/home/${myUserName}";
+
+      isNormalUser = true;
+      # Enable 'docker' control for the user
+      extraGroups = [
+        "wheel" # Enable ‘sudo’ for the user
+        "networkmanager" # Enable ‘sudo’ for the user
+      ];
+      openssh.authorizedKeys.keys = [
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDd4nbpzqHdNWJCNDGg5NbZ1zX9OHwJIr9//mjtDL9mv"
+      ];
+      shell = pkgs.zsh;
+    };
+
+    # Set trusted users
+    nix.settings.trusted-users = [
+      "scott"
+    ];
+  };
+
   # home manager for Scott
   flake.modules.homeManager.${myUserName} = { pkgs, lib, ... }: {
 
