@@ -3,7 +3,14 @@
   ...
 }:
 let
-  inherit (config.flake.modules) darwin;
+  inherit (config.flake.modules) darwin homeManager;
+
+  # set home-manager user scott
+  homeManagerUsers = {
+    scott.imports = [
+      homeManager.scott
+    ];
+  };
 in
 {
   configurations.darwin.GraySlab.module =
@@ -36,5 +43,7 @@ in
       # Used for backwards compatibility, please read the changelog before changing.
       # $ darwin-rebuild changelog
       system.stateVersion = 6;
+
+      home-manager.users = homeManagerUsers;
     };
 }

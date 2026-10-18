@@ -66,15 +66,5 @@ let
   };
 in
 {
-
   inherit flake;
-
-  # inject home-manager user scott into darwin configurations
-  configurations.darwin.Bluish.module.home-manager.users.${myUserName}.imports = [
-    homeManager.${myUserName}
-  ];
-
-  configurations.darwin.GraySlab.module.home-manager.users.${myUserName}.imports = [
-    homeManager.${myUserName}
-  ];
 }
