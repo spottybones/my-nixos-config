@@ -3,7 +3,14 @@
   ...
 }:
 let
-  inherit (config.flake.modules) nixos;
+  inherit (config.flake.modules) nixos homeManager;
+
+  # set home-manager user scott
+  homeManagerUsers = {
+    scott.imports = [
+      homeManager.scott
+    ];
+  };
 
   # add scott to "docker" group
   dockerGroup = {
@@ -46,6 +53,9 @@ in
       };
 
       system.stateVersion = "24.11"; # Did you read the comment?
+
+      # set up home-manager users
+      home-manager.users = homeManagerUsers;
 
     };
 }
