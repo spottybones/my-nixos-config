@@ -14,6 +14,7 @@ in
         homeManager.tmux
         homeManager.zsh
         homeManager.git
+        homeManager.gemini-cli
       ];
 
       home.packages = [
