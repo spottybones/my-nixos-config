@@ -175,7 +175,28 @@
         "import-tree": "import-tree",
         "nix-darwin": "nix-darwin",
         "nixpkgs": "nixpkgs",
-        "nixpkgs-darwin": "nixpkgs-darwin"
+        "nixpkgs-darwin": "nixpkgs-darwin",
+        "wrappers": "wrappers"
+      }
+    },
+    "wrappers": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1793039441,
+        "narHash": "sha256-jy4OtEVuECXahyruvHqQegXnxmBZEzWQ2JMd9DKVNqw=",
+        "owner": "nix-community",
+        "repo": "nix-wrapper-modules",
+        "rev": "afb6c5e9c38d4cd244748d9a9f0a6c4d1d7cb0e2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "nix-wrapper-modules",
+        "type": "github"
       }
     }
   },
