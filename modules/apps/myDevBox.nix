@@ -10,10 +10,10 @@ in
       imports = [
         homeManager.bat
         homeManager.lazygit
-        homeManager.nvim-minimax
         homeManager.tmux
         homeManager.zsh
         homeManager.git
+        homeManager.neovim
       ];
 
       home.packages = [
