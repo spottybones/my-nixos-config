@@ -14,6 +14,7 @@ in
         homeManager.zsh
         homeManager.git
         homeManager.neovim
+        homeManager.nh
       ];
 
       home.packages = [
