@@ -5,7 +5,7 @@ SYSTEM := `uname -s | tr '[:upper:]' '[:lower:]'`
 ARCH := `uname -m`
 HOST := `uname -n`
 NIX_SYSTEM := SYSTEM + "-" + ARCH
-KEEP_AGE := "18d"
+KEEP_AGE := "14d"
 
 # default recipe is to list other recipes
 @_default:
@@ -49,17 +49,7 @@ rebuild-switch:
 
 # collect garbage older than 10 days
 cleanup-garbage:
-    #!/run/current-system/sw/bin/bash
-    set -eufo pipefail
-    case {{ SYSTEM }} in
-      linux)
-        echo "Clearing old system profiles on {{ HOST }}"
-        sudo nix profile wipe-history --older-than {{ KEEP_AGE }} --profile /nix/var/nix/profiles/system
-        ;;
-    esac
-    echo "Collecting garbage older than {{ KEEP_AGE }}"
-    nix-collect-garbage --delete-older-than {{ KEEP_AGE }}
-    sudo nix-collect-garbage --delete-older-than {{ KEEP_AGE }}
+    nh clean all --keep-since='14 days' --no-direnv --no-gcroots
 
 # update locked system and home-manager dependencies
 update-dependencies:
