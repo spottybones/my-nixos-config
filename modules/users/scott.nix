@@ -62,6 +62,10 @@ let
       sessionVariables = {
         EDITOR = "nvim";
         NVIM_APPNAME = "nvim-minimax";
+
+        # jujutsu settings for Scott
+        JJ_USER = "${myFullName}";
+        JJ_EMAIL = "${myEmail}";
       };
 
       # add ~/.local/bin to last of paths
@@ -84,12 +88,6 @@ let
     # # git configuration for Scott
     # flake.modules.homeManager.git = { lib, ... }: {
     programs.git.settings.user = {
-      name = lib.mkDefault "${myFullName}";
-      email = lib.mkDefault "${myEmail}";
-    };
-
-    # personalize Jujutsu for Scott
-    programs.jujutsu.settings.user = {
       name = lib.mkDefault "${myFullName}";
       email = lib.mkDefault "${myEmail}";
     };

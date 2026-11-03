@@ -119,11 +119,11 @@
         "wrappers": "wrappers"
       },
       "locked": {
-        "lastModified": 1793731128,
-        "narHash": "sha256-5heL/679yzm0y8I+HzNKeZ7muHK9DO/O4s4cncD02HM=",
+        "lastModified": 1793733297,
+        "narHash": "sha256-gvYL9I+djr5R/BJZuE2qaLjQW3tjg/bZMuTmrJlYtPc=",
         "owner": "spottybones",
         "repo": "wrapped-jujutsu",
-        "rev": "f1b7401c4a97bc95608d17137215a13773f94592",
+        "rev": "70039088a64fd3f732d441c6f1a9df6683aa3810",
         "type": "github"
       },
       "original": {
