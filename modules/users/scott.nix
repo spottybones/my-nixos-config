@@ -87,7 +87,12 @@ let
       name = lib.mkDefault "${myFullName}";
       email = lib.mkDefault "${myEmail}";
     };
-    # };
+
+    # personalize Jujutsu for Scott
+    programs.jujutsu.settings.user = {
+      name = lib.mkDefault "${myFullName}";
+      email = lib.mkDefault "${myEmail}";
+    };
   };
 in
 {

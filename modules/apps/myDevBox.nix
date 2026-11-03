@@ -13,6 +13,7 @@ in
         homeManager.tmux
         homeManager.zsh
         homeManager.git
+        homeManager.jujutsu
         homeManager.neovim
         homeManager.nh
       ];
