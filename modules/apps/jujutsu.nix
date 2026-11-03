@@ -7,18 +7,12 @@
       enable = true;
       settings = {
         ui = {
-          pager = "delta";
           diff-formatter = ":git";
-        };
-        aliases = {
-          l = [
-            "log"
-            "-r"
-            "(main..@):: | main(..@)-"
-          ];
         };
       };
     };
+
+    programs.delta.enableJujutsuIntegration = true;
 
     # install lazyjj package
     home.packages = [ pkgs.lazyjj ];
