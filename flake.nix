@@ -9,7 +9,9 @@
     home-manager.url = "github:nix-community/home-manager/release-26.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    # my wrapped programs
     neovim.url = "github:spottybones/wrapped-neovim";
+    jujutsu.url = "github:spottybones/wrapped-jujutsu";
 
     # pre-commit-hooks
     git-hooks.url = "github:cachix/git-hooks.nix";

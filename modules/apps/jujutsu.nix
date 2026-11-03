@@ -1,26 +1,12 @@
-{ ... }:
+{ inputs, ... }:
 {
   flake.modules.homeManager.jujutsu = { pkgs, ... }: {
 
-    # set up git and github
-    programs.jujutsu = {
-      enable = true;
-      settings = {
-        ui = {
-          pager = "delta";
-          diff-formatter = ":git";
-        };
-        aliases = {
-          l = [
-            "log"
-            "-r"
-            "(main..@):: | main(..@)-"
-          ];
-        };
-      };
-    };
+    home.packages = [
+      inputs.jujutsu.packages.${pkgs.stdenv.hostPlatform.system}.default
+      pkgs.lazyjj
+    ];
 
-    # install lazyjj package
-    home.packages = [ pkgs.lazyjj ];
+    programs.delta.enableJujutsuIntegration = true;
   };
 }
