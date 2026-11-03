@@ -6,7 +6,5 @@
       inputs.jujutsu.packages.${pkgs.stdenv.hostPlatform.system}.default
       pkgs.lazyjj
     ];
-
-    programs.delta.enableJujutsuIntegration = true;
   };
 }
